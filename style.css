@@ -1,0 +1,88 @@
+/* Basic styles for the body and direction */
+body {
+    font-family: 'Tahoma', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    direction: ltr;
+    text-align: left;
+}
+
+/* Container for centering the content */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Section styling for each part */
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Button base styles */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Disabled button style */
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Faucet link styling */
+.faucet-btn {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.faucet-btn:hover {
+    background-color: #218838;
+}
+
+/* List styling for last GMs */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f8f9fa;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+/* Status and text styling */
+#walletStatus, #totalGMs, #cooldownTimer {
+    font-weight: bold;
+    color: #555;
+}
