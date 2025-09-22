@@ -1,3 +1,11 @@
+let provider, signer, contract, userAddress;
+
+// Replace these with your contract's details
+const CONTRACT_ADDRESS = "0xYourContractAddressHere";
+const CONTRACT_ABI = [ /* Put your ABI JSON here */ ];
+
+const COOLDOWN_MS = 60 * 60 * 1000; // 1 hour cooldown
+
 async function connectWallet() {
   if (typeof window.ethereum === "undefined") {
     alert("MetaMask is not installed!");
@@ -61,23 +69,29 @@ async function connectWallet() {
     document.getElementById("walletStatus").innerText = "Failed: " + error.message;
   }
 }
-// Event listeners for buttons
-document.addEventListener('DOMContentLoaded', () => {
-  const connectBtn = document.getElementById('connectWallet');
-  const sendBtn = document.getElementById('sendGM');
 
-  connectBtn.addEventListener('click', async () => {
-    if (userAddress) {
-      disconnectWallet();
-    } else {
-      await connectWallet();
-    }
-  });
+function disconnectWallet() {
+  userAddress = null;
+  signer = null;
+  contract = null;
+  document.getElementById("walletStatus").innerText = "Status: Disconnected";
+  document.getElementById("connectWallet").innerText = "Connect Wallet";
+  document.getElementById("sendGM").disabled = true;
+}
 
-  sendBtn.addEventListener('click', sendGM);
-
-  // Auto-check cooldown if address exists
-  if (userAddress) {
-    checkCooldown();
+async function sendGM() {
+  if (!contract) {
+    alert("Please connect your wallet first.");
+    return;
   }
-});
+  try {
+    const tx = await contract.sendGM();
+    await tx.wait();
+
+    localStorage.setItem(`lastGM_${userAddress}`, Date.now().toString());
+
+    document.getElementById("sendGM").disabled = true;
+    updateTimer();
+    loadData();
+  } catch (error) {
+    console
