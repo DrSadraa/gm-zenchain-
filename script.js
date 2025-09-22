@@ -8,7 +8,7 @@ const ZENCHAIN_CONFIG = {
 };
 
 // Contract address - REPLACE WITH YOUR ACTUAL CONTRACT ADDRESS
-const CONTRACT_ADDRESS = '0x1234567890123456789012345678901234567890'; // Placeholder
+const CONTRACT_ADDRESS = '0x72bf210e0a01838367ef47f5b6087d22d53c93d6'; // Placeholder
 
 // Sample ABI - REPLACE WITH YOUR ACTUAL ABI
 const CONTRACT_ABI = [
@@ -200,4 +200,5 @@ window.addEventListener('load', () => {
     if (window.ethereum && window.ethereum.selectedAddress) {
         connectWallet();
     }
+
 });
