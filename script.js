@@ -61,3 +61,23 @@ async function connectWallet() {
     document.getElementById("walletStatus").innerText = "Failed: " + error.message;
   }
 }
+// Event listeners for buttons
+document.addEventListener('DOMContentLoaded', () => {
+  const connectBtn = document.getElementById('connectWallet');
+  const sendBtn = document.getElementById('sendGM');
+
+  connectBtn.addEventListener('click', async () => {
+    if (userAddress) {
+      disconnectWallet();
+    } else {
+      await connectWallet();
+    }
+  });
+
+  sendBtn.addEventListener('click', sendGM);
+
+  // Auto-check cooldown if address exists
+  if (userAddress) {
+    checkCooldown();
+  }
+});
